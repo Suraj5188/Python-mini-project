@@ -1,0 +1,44 @@
+#project Python
+'''
+
+We are going to write a programm that generates a random number & asks the user to guess it.
+
+If the  player guesses is higher number than the actual numbers , the program displayes 
+"Lower number please" similarly if the user's guesses is to low, the program prints 
+"Higher number please" when the user guesses is to low ,the programm prints "Higher number please"
+when the user guesses the correct number ,the programm displays the number of guesses the player 
+used to arrive at the number
+
+'''
+
+import random
+print("Enter number:")
+randNumber= random.randint(1,10)
+#print(randNumber)
+guesses=0
+userguess=None
+
+while(userguess!=randNumber):
+    userguess=int(input("Enter Your choice:"))
+    guesses+=1
+    if(userguess== randNumber):
+        print("User guessed it right!")
+        
+    else:
+        if(userguess>=randNumber):
+            print("You Guessed it the wrong number enter smaller number")
+        else:
+            print("You Guessed it the wrong number enter larger number")
+
+    
+
+print(f"You guessed the number in {guesses} guesses")
+
+with open("Project_Python.txt","r") as f:
+    Project_Python=int(f.read())
+
+if guesses<Project_Python:
+    print("You have just Broken the highscore...Well Played!")
+    with open("Project_Python.txt","w") as f:
+        f.write(str(guesses))
+        
